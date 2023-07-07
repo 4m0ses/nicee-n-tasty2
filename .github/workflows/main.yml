@@ -16,11 +16,11 @@ Jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       
-      - name: Install Zola
-        run: sudo snap install zola --edge
+      # - name: Install Zola
+      #   run: sudo snap install zola --edge
       
-      - name: Build the Wesbite
-        run: zola build
+      # - name: Build the Wesbite
+      #   run: zola build
       
       - name: Scan the host key
         run: mdkir -p ~/.ssh/ && ssh-keyscan -H $DEPLOY_SERVER >> ~/.ssh/know_hosts
