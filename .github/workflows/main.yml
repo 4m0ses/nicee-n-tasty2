@@ -9,7 +9,7 @@ jobs:
     environment: deploy
     steps:
       - name: checkout the current branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
        # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
@@ -28,6 +28,6 @@ jobs:
           script: |
             echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S
           source: "deploy.tar"
-          target: "/home/user-data/www/nicee-n-tasty"
+          target: "/home/user-data/www/nicee-n-tasty/"
 
 
