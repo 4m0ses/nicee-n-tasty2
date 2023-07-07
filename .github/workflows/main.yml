@@ -29,6 +29,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22  # Update the port if your SSH server uses a different port
+          proxy_timeout: 180
           script: |
             echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S
           source: nicee-n-tasty/*
