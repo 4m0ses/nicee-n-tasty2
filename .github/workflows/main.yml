@@ -10,18 +10,6 @@ jobs:
     steps:
       - name: checkout the current branch
         uses: actions/checkout@v3
-
-      - name: Initialize the ssh-agent
-        uses: webfactory/ssh-agent@v0.4.1
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      
-      - name: Scan the host key
-        run: |
-          mkdir -p ~/.ssh/ && ssh-keyscan -H ${{ secrets.DEPLOY_SERVER }} >> ~/.ssh/known_hosts
-          ls -all
-        env:
-          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
       
       - name: SSH into the server and deploy
         uses: appleboy/ssh-action@master
@@ -30,5 +18,5 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22  # Update the port if your SSH server uses a different port
-          script: sudo cp -Rf . /home/user-data/www/nicee-n-tasty/
+          script: ls
 
