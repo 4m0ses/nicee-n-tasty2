@@ -11,13 +11,21 @@ jobs:
       - name: checkout the current branch
         uses: actions/checkout@v2
        # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          mkdir ../build
-          cp -TR . ../build
-          tar -cvf deploy.tar ../build/
-          chmod 777 deploy.tar
-          ls -all
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          run: |
+            mkdir ../build
+            cp -TR . ../build
+            tar -cvf deploy.tar ../build/
+            chmod 777 deploy.tar
+            ls -all
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+          path: distfiles
       
       - name: SSH into the server and deploy
         uses: appleboy/scp-action@master
@@ -28,7 +36,7 @@ jobs:
           port: 22  # Update the port if your SSH server uses a different port
           script: |
             echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S
-          source: "deploy.tar"
-          target: "/home/user-data/www/nicee-n-tasty/"
+          source: distfiles/*
+          target: /home/user-data/www/nicee-n-tasty/
 
 
