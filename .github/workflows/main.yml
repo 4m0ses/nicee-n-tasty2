@@ -32,6 +32,6 @@ jobs:
           script: |
             echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S
           source: distfiles/*
-          target: /home/user-data/www/nicee-n-tasty/
+          target: ~/
 
 
