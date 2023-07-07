@@ -23,7 +23,7 @@ jobs:
           path: nicee-n-tasty
       
       - name: SSH into the server and deploy
-        uses: appleboy/scp-action@master
+        uses: appleboy/scp-action@v0.1.3
         with:
           host: ${{ secrets.DEPLOY_SERVER }}
           username: ${{ secrets.DEPLOY_USERNAME }}
