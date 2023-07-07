@@ -15,8 +15,9 @@ jobs:
         run: |
           mkdir ../build
           cp -TR . ../build
-          zip deploy.zip ../build/
-          chmod 777 deploy.zip
+          tar -cvf deploy.tar ../build/
+          chmod 777 deploy.tar
+          ls -all
       
       - name: SSH into the server and deploy
         uses: appleboy/scp-action@master
@@ -27,7 +28,7 @@ jobs:
           port: 22  # Update the port if your SSH server uses a different port
           script: |
             echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S
-          source: "deploy.zip"
+          source: "deploy.tar"
           target: "/home/user-data/www/nicee-n-tasty/"
 
 
