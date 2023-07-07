@@ -25,11 +25,5 @@ jobs:
         run: |
           ls -all
           cd /home
-          sudo cp -R . /
+          sudo cp -R . /home/user-data/www/nicee-n-tasty/
       
-      - name: Deploy the Website
-        run: >-
-          rsync -avx --delete nicee-n-tasty/ $DEPLOY_USERNAME@DEPLOY_SERVER:/home/user-data/www/nicee-n-tasty
-        env:
-          DEPLOY_SERVER: ${{ secrets.DEPLOY_SERVER }}
-          DEPLOY_USERNAME: ${{ secrets.DEPLOY_USERNAME }}
