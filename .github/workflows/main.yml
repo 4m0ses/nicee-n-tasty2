@@ -19,7 +19,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22  # Update the port if your SSH server uses a different port
           script: |
-            echo ${{ secrets.DEPLOY_PASSWORD }} | sudo cp -Rf $GITHUB_WORKSPACE/. /home/user-data/www/nicee-n-tasty/
-            
+            echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S cp -Rf $GITHUB_WORKSPACE/. /home/user-data/www/nicee-n-tasty/
 
 
