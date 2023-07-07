@@ -27,11 +27,10 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DEPLOY_SERVER }}
-          username: your-ssh-username
+          username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22  # Update the port if your SSH server uses a different port
           script: |
-            # Add your deployment commands here
             ls -all
             cd /home
             sudo cp -R . /home/user-data/www/nicee-n-tasty/
