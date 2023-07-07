@@ -23,6 +23,8 @@ jobs:
       
       - name: Deploy to website
         run: |
+          ls -all
+          cd /home
           sudo cp -R . /home/user-data/www/nicee-n-tasty
       
       - name: Deploy the Website
