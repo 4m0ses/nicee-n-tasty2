@@ -18,5 +18,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22  # Update the port if your SSH server uses a different port
-          script: sudo cp -Rf . /home/user-data/www/nicee-n-tasty/
+          script: |
+            echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S cp -R . /home/user-data/www/nicee-n-tasty/
+
 
