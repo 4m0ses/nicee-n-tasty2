@@ -15,12 +15,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          run: |
-            mkdir ../build
-            cp -TR . ../build
-            tar -cvf deploy.tar ../build/
-            chmod 777 deploy.tar
-            ls -all
+          path: ./
 
       - uses: actions/download-artifact@v3
         with:
