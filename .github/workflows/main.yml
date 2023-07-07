@@ -20,7 +20,7 @@ jobs:
           port: 22  # Update the port if your SSH server uses a different port
           script: |
             echo ${{ secrets.DEPLOY_PASSWORD }} | sudo rm -rf /home/user-data/www/nicee-n-tasty/*
-            sudo cp -R $GITHUB_WORKSPACE/. /home/user-data/www/nicee-n-tasty/
+            echo ${{ secrets.DEPLOY_PASSWORD }} | sudo cp -R $GITHUB_WORKSPACE/. /home/user-data/www/nicee-n-tasty/
             
 
 
