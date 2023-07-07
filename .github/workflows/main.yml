@@ -25,9 +25,9 @@ jobs:
           username: ${{ secrets.DEPLOY_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22  # Update the port if your SSH server uses a different port
+          script: |
+            echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S
           source: "deploy.tar"
           target: "/home/user-data/www/nicee-n-tasty"
-          # script: |
-          #   echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S cp -Rf ${{ github.workspace }}/. /home/user-data/www/nicee-n-tasty/
 
 
