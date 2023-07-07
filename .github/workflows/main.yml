@@ -20,7 +20,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: my-artifact
-          path: distfiles
+          path: nicee-n-tasty
       
       - name: SSH into the server and deploy
         uses: appleboy/scp-action@master
@@ -31,7 +31,7 @@ jobs:
           port: 22  # Update the port if your SSH server uses a different port
           script: |
             echo ${{ secrets.DEPLOY_PASSWORD }} | sudo -S
-          source: distfiles/*
-          target: /home/user-data/www/nicee-n-tasty/
+          source: nicee-n-tasty/*
+          target: /home/user-data/www/
 
 
